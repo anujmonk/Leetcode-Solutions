@@ -1,3 +1,4 @@
+[Discussion Post (created on 18/0/2021 at 15:9)](https://leetcode.com/problems/find-numbers-with-even-number-of-digits/discuss/1022791/Runtime%3A-1-ms-faster-than-94.66-of-Java-online-submissions)  
 <h2>1295. Find Numbers with Even Number of Digits</h2><h3>Easy</h3><hr><div>Given an array <code>nums</code> of integers, return how many of them contain an <strong>even number</strong> of digits.
 <p>&nbsp;</p>
 <p><strong>Example 1:</strong></p>
