@@ -1,14 +1,19 @@
+// Time Complexity : O(logn)
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode :
+// Any problem you faced while coding this :
+
+
+// Your code here along with comments explaining your approach
 class Solution {
     public int[] searchRange(int[] nums, int target) {
         int[] out=new int[2];
+        int start=-1,end=-1;
         int low=0,high=nums.length-1;
-        int first=-1,last=-1;
-        
-        //First occurrence 
         while(low<=high){
             int mid=low+(high-low)/2;
             if(nums[mid]==target){
-                first=mid;
+                start=mid;
                 high=mid-1;
             }
             else if(nums[mid]>target)
@@ -16,15 +21,18 @@ class Solution {
             else
                 low=mid+1;
         }
-        out[0]=first;
-        
-        //Last Occurrence
+        if(start==-1)
+        {
+            out[0]=-1;
+            out[1]=-1;
+            return out;
+        }
         low=0;
         high=nums.length-1;
         while(low<=high){
             int mid=low+(high-low)/2;
             if(nums[mid]==target){
-                last=mid;
+                end=mid;
                 low=mid+1;
             }
             else if(nums[mid]>target)
@@ -32,8 +40,8 @@ class Solution {
             else
                 low=mid+1;
         }
-        out[1]=last;
-        
+        out[0]=start;
+        out[1]=end;
         return out;
     }
 }
