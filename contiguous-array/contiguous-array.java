@@ -22,10 +22,7 @@ class Solution {
             }
             
             // Checking for length
-            if(currSum==0) {
-                maxLength=Math.max(maxLength,i-sumMap.get(0));
-            }
-            else if(sumMap.containsKey(currSum)) {
+            if(sumMap.containsKey(currSum)) {
                 maxLength=Math.max(maxLength,i-sumMap.get(currSum));
             }
             
