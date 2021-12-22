@@ -1,0 +1,67 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+  Runtime: 0 ms
+  Memory Usage: 37.3 MB
+ */
+class Solution {
+
+    private List<List<Integer>> ans = new ArrayList<>();
+    
+    public List<List<Integer>> findLeaves(TreeNode root) {
+        
+        if(root==null) {
+            return ans;
+        }
+        
+        while(root.left!=null || root.right!=null) {
+            List<Integer> list = new ArrayList<>();
+            helper(root,list);    
+            ans.add(list);
+        }
+        
+        List<Integer> l = new ArrayList<>();
+        l.add(root.val);
+        ans.add(l);
+        return ans;
+    }
+    
+    private boolean helper(TreeNode root,List<Integer> list) {
+        
+        if(root==null) {
+            return false;
+        }
+        //System.out.println("root"+root.val);
+        if(root.left==null && root.right==null) {
+            return true;
+        }
+        
+        
+        boolean lNode=helper(root.left,list);    
+        if(lNode) {
+         //   System.out.println(root.left.val);
+            list.add(root.left.val);
+            root.left=null;
+        }
+        
+        boolean rNode=helper(root.right,list);
+        if(rNode) {
+           // System.out.println(root.right.val);
+            list.add(root.right.val);
+            root.right=null;
+        }
+        
+        return false;
+    }
+}
