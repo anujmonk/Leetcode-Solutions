@@ -7,6 +7,47 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
+/**
+/**
+ Best solution
+ 
+class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        
+        if(root == null) {
+            return null;
+        }
+        
+        TreeNode left =lowestCommonAncestor(root.left,p,q);
+        TreeNode right =lowestCommonAncestor(root.right,p,q);
+        
+        // If one of the value is a node then return it.
+        if((root == p) || (root==q)) {
+            return root;
+        }
+        
+        // The values p and q doesnot exits in the subtree
+        if((left==null) && (right==null)) {
+            return null;
+        }
+        // The values p and q exist in the subtree
+        else if((left!=null) && (right!=null)) {
+            return root;
+        }
+        // Left subtree contains a value
+        else if((left!=null) && (right==null)) {
+            return left;
+        }
+        // Right subtree contains a value
+        else if((left==null) && (right!=null)) {
+            return right;
+        }
+        
+        return null;
+    }
+}
+*/
+
 class Solution {
     
     // Brute Force
