@@ -1,5 +1,7 @@
 class MapSum {
 
+    // A more optimal solution exists in which you can store value based on the prefix, use Trie and instea of using the associated word directly store the value.
+    
     class Node {
         
         private char value;
