@@ -28,7 +28,7 @@ class Solution {
                 if(map.get(heap.peek())==entry.getValue()) {
                     int a = entry.getKey().compareTo(heap.peek());
                     
-                    System.out.println(a +" "+entry.getKey()+" "+heap.peek());
+                    // System.out.println(a +" "+entry.getKey()+" "+heap.peek());
                     if(a<0) {
                     heap.poll();
                     heap.add(entry.getKey()); 
@@ -36,7 +36,7 @@ class Solution {
                     }
                     continue;
                 }
-                 System.out.println(" "+entry.getKey()+" "+heap.peek());
+                 // System.out.println(" "+entry.getKey()+" "+heap.peek());
                 heap.poll();
                 heap.add(entry.getKey());
             }
