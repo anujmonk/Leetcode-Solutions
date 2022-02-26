@@ -14,6 +14,15 @@ class Solution {
         }
         return arr;
         
+        // Important Concept of storing two numbers in a single number
+        /**
+            we can store nums[k]= nums[i] *MAX_VALUE +nums[j]
+            now to retrieve nums[i] from nums[k] 
+            we can do nums[k]/MAX_VALUE
+            
+            To retrieve nums[j] from nums[k]
+            we can do nums[k]%MAX_VALUE
+        */
         
     }
 }
