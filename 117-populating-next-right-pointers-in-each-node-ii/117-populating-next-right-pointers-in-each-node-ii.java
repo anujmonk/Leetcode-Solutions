@@ -24,36 +24,32 @@ class Node {
 class Solution {
     public Node connect(Node root) {
         
-        // Can be solved by BFS
+        // Using O(1) space
         
         if(root == null) {
             return null;
         }
+        Node dummy = new Node(-101);
+        Node prev = dummy;
+        Node ans = root;
         
-        Queue<Node> queue = new LinkedList<>();
-        queue.add(root);
-        queue.add(null);
-        
-        while(!queue.isEmpty()) {
-            
-            while(true) {
-                Node curr = queue.remove();
-                
-                if(curr == null) {
-                    
-                    break;
-                }
-                curr.next = queue.peek();
-                if(curr.left!=null) {
-                    queue.add(curr.left);
-                }
-                if(curr.right!=null) {
-                    queue.add(curr.right);
-                }
+        while(root!=null) {
+            if(root.left!=null) {
+                prev.next=root.left;
+                prev=prev.next;
             }
-            if(!queue.isEmpty())
-                queue.add(null); 
+            if(root.right!=null) {
+                prev.next=root.right;
+                prev=prev.next;
+            }
+            root=root.next;
+            if(root==null) {
+                prev= dummy;
+                root=prev.next;
+                dummy.next=null;
+            }
         }
-        return root;
+        return ans;
+        
     }
 }
