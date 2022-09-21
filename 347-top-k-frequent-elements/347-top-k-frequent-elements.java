@@ -1,25 +1,24 @@
 class Solution {
     public int[] topKFrequent(int[] nums, int k) {
-        int[] ans = new int[k];
         
-        Map<Integer,Integer> map = new HashMap<>();
-        
-        for(int i=0;i<nums.length;i++) {
-            map.put(nums[i],map.getOrDefault(nums[i],0)+1);
+        Map<Integer,Integer> hashMap = new HashMap<>();
+        for(int i:nums) {
+            hashMap.put(i,hashMap.getOrDefault(i,0)+1);
         }
         
-        Queue<Integer> heap= new PriorityQueue<>((a,b) -> map.get(a)-map.get(b));
+        PriorityQueue<Integer> queue = new PriorityQueue<Integer>((a,b) -> hashMap.get(a) - hashMap.get(b));
         
-        
-        for(Map.Entry<Integer,Integer> entry:map.entrySet()) {
-            heap.add(entry.getKey());
-            if(heap.size()>k) {
-                heap.remove();
+        for(Map.Entry<Integer,Integer> entry: hashMap.entrySet()) {
+            queue.add(entry.getKey());
+            if(queue.size()>k) {
+                queue.remove();
             }
+            
         }
-        int j=0;
-        while(!heap.isEmpty()) {
-            ans[j++]=heap.remove();
+        
+        int[] ans = new int[k];
+        for(int i=k-1;i>=0;i--) {
+            ans[i] = queue.remove();
         }
         return ans;
     }
